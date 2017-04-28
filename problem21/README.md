@@ -16,4 +16,5 @@ I am not sure what the proper convention should be for amicable pair search.  Th
 ## Lessons
 
 * `Let` is **Awesome**!!!! :heart_eyes: :heart_eyes: Local binding makes debugging much easier and allows me to avoid defining as many top level functions.
-* Test each new function throughly.  I still ran into issues where I didn't test using data from previous functions and it came back to bite me.
+* Test each new function thoroughly.  I still ran into issues where I didn't test using data from previous functions and it came back to bite me.
+* Be aware that using vectorized code is not always preformat.  I need to look into this more to understand what is going on.
