@@ -35,7 +35,7 @@ have to worry about conflicts within the sets.
 The advantages of this method is that it conserves memory over Jason's approach since the dictionary is pruned at each 
 iteration but the disadvantage is that the code is more complex and runs a hair slower due to the cost of checking for 
 membership, insertion, and deletion within the sets and the dictionary.  That being said, since get, insertion, and 
-deletion are $O(1)$ for [dictionaries and sets](https://wiki.python.org/moin/TimeComplexity), this gives $O(n^2)$
+deletion are O(1) for [dictionaries and sets](https://wiki.python.org/moin/TimeComplexity), this gives O(n^2)
 complexity for both solutions, ie. a summation of sums.
 
 ## Lessons
