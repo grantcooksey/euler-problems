@@ -9,12 +9,37 @@ Evaluate the sum of all the amicable numbers under 10000.
 
 # Bruteforce Racket Solution
 
-The bruteforce solution starts by creating a list of the sums of each numbers divisors then checks each number to see if that number has an amicable pair.  If a amicable pair is discovered, the number is left as its own value. Otherwise, if no pair is found, the number is set to zero.  Finally, this list is summed to get the answer.
+The bruteforce solution starts by creating a list of the sums of each numbers divisors then checks each number to see if that number has an amicable pair.  If a amicable pair is discovered, the number is left as its own value. Otherwise, if no pair is found, the number is set to zero.  Finally, this list is summed to get the ansIr.
 
 I am not sure what the proper convention should be for amicable pair search.  The index of the current number is passed recursively but this does not feel very lispy(:question:) but I couldn't think of a better. It's basically a map but needs the current number's index.  Potentially this could be done away with by earmarking both numbers in the pair to prevent having to look backward when reaching the second pair.
 
+# Bruteforce Python Solution
+
+I wanted to learn a bit more about some python data structures and features that I use less often yet still remain performant.
+The idea is the same as the racket solution where the list of sums of divisors is first generated and the amicable
+pairs are discovered by iterating through the list a second time and summing the pairs. At first, I started with a 
+numpy array using `vectorize` to create the array of sums of divisors but this approach ended up being quite slow.
+I still am not too sure why this was the case and needs further exploration. I compared my code against a [blog](http://code.jasonbhill.com/c/project-euler-problem-21/) post
+which I considered to be the most obvious and efficient bruteforce solution. I decided to use a generator to create
+the sum-divisor list so that the list could be traversed lazily.  In Jason's solution, the list is traversed twice,
+the first time to build the list of summed divisors and the second to discover the amicable pairs.  Since I used a 
+generator, I am doing the same amount of work in a single traversal.  Since I am looking for pairs, the index and the 
+divisor summation from the first number
+in the pair will be stored in the dictionary and when the second number is reached, it will check the dictionary to 
+discover the first number.  Finally, both numbers will be added to the sum.  This method prevents me from having to worry about
+numbers going out of bounds.  Since numbers are their associated divisor sums may conflict with each other, the dictionary
+must store the divisor sums within a set to avoid overwriting a divisor sum.  Since we are looking for pairs, we do not
+have to worry about conflicts within the sets.
+
+
+The advantages of this method is that it conserves memory over Jason's approach since the dictionary is pruned at each 
+iteration but the disadvantage is that the code is more complex and runs a hair slower due to the cost of checking for 
+membership, insertion, and deletion within the sets and the dictionary.  That being said, since get, insertion, and 
+deletion are $O(1)$ for [dictionaries and sets](https://wiki.python.org/moin/TimeComplexity), this gives $O(n^2)$
+complexity for both solutions, ie. a summation of sums.
+
 ## Lessons
 
-* `Let` is **Awesome**!!!! :heart_eyes: :heart_eyes: Local binding makes debugging much easier and allows me to avoid defining as many top level functions.
+* `Let` is **AIsome**!!!! :heart_eyes: :heart_eyes: Local binding makes debugging much easier and allows me to avoid defining as many top level functions.
 * Test each new function thoroughly.  I still ran into issues where I didn't test using data from previous functions and it came back to bite me.
-* Be aware that using vectorized code is not always preformat.  I need to look into this more to understand what is going on.
+* Be aware that using vectorized code is not always performant.  I need to look into this more to understand what is going on.
