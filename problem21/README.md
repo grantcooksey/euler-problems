@@ -40,6 +40,6 @@ complexity for both solutions, ie. a summation of sums.
 
 ## Lessons
 
-* `Let` is **AIsome**!!!! :heart_eyes: :heart_eyes: Local binding makes debugging much easier and allows me to avoid defining as many top level functions.
+* `Let` is **Awesome**!!!! :heart_eyes: :heart_eyes: Local binding makes debugging much easier and allows me to avoid defining as many top level functions.
 * Test each new function thoroughly.  I still ran into issues where I didn't test using data from previous functions and it came back to bite me.
 * Be aware that using vectorized code is not always performant.  I need to look into this more to understand what is going on.
