@@ -38,8 +38,22 @@ membership, insertion, and deletion within the sets and the dictionary.  That be
 deletion are O(1) for [dictionaries and sets](https://wiki.python.org/moin/TimeComplexity), this gives O(n^2)
 complexity for both solutions, ie. a summation of sums.
 
-## Lessons
+# Optimization
+
+I derived the optimized solution with the help of the explanation provided by PE(project euler).  Their solution is 
+interesting because it conserves memory by not utilizing any data structures in the outer loop to find amicable pairs.
+In this case, there is a very slight trade-off between speed and memory usage between PE's solution and mine.  PE's
+solution is **very slightly** slower because they calculate the sum of divisors twice where my solution calculates
+it once and stores the value.  I prefer their solution better since it is much more elegant.
+
+The main optimization comes from making more efficient methods of calculating the sum of divisors for a number.  I 
+understood that the upper bound of numbers that you need to check was the floor of the square root of the given 
+number but I missed the realization that odd number cannot have even divisors.  This improves the solution from O(n^2) 
+to O(sqrt(n)*n).
+
+# Lessons
 
 * `Let` is **Awesome**!!!! :heart_eyes: :heart_eyes: Local binding makes debugging much easier and allows me to avoid defining as many top level functions.
 * Test each new function thoroughly.  I still ran into issues where I didn't test using data from previous functions and it came back to bite me.
 * Be aware that using vectorized code is not always performant.  I need to look into this more to understand what is going on.
+* Odd numbers cannot have even numbers as divisors.
