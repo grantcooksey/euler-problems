@@ -51,6 +51,10 @@ understood that the upper bound of numbers that you need to check was the floor 
 number but I missed the realization that odd number cannot have even divisors.  This improves the solution from O(n^2) 
 to O(sqrt(n)*n).
 
+# Prime Factorization
+
+[Proof](http://planetmath.org/formulaforsumofdivisors).
+
 # Lessons
 
 * `Let` is **Awesome**!!!! :heart_eyes: :heart_eyes: Local binding makes debugging much easier and allows me to avoid defining as many top level functions.

@@ -26,6 +26,26 @@ import time
 #    return s
 
 
+#def sum_divisors(n):
+#    original = n
+#    s = 1
+#    p = 2
+#    while p * p <= n and n > 1:
+#        if n % p == 0:
+#            j = p * p
+#            n = n / p
+#            while n % p == 0:
+#                j = j * p
+#                n = n / p
+#            s = s * ((j - 1) / (p - 1))
+#        if p == 2:
+#            p = 3
+#        else:
+#            p = p + 2
+#    if n > 1:
+#        s = s * (n + 1)
+#    return s - original
+
 def sum_divisors(n):
     s = 0
     for i in range(1, n):
@@ -53,7 +73,7 @@ def amicable_pairs():
 
 def main():
     total = 0
-    count = 100
+    count = 1
     for i in xrange(count):
         start = time.time()
         answer = amicable_pairs()
