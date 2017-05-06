@@ -31,10 +31,10 @@ def count_non_abundant():
 
     deficient_list = [1] * end
 
-    for i in range(1, len(abundant_numbers)):
-        for j in range(1, len(abundant_numbers)):
-            if j + i < end and i != j:
-                deficient_list[i+j] = 0
+    for i in range(len(abundant_numbers)):
+        for j in range(len(abundant_numbers)):
+            if abundant_numbers[j] + abundant_numbers[i] < end:
+                deficient_list[abundant_numbers[j] + abundant_numbers[i]] = 0
 
     non_abundant_sum = 0
     for i in range(1, end):
