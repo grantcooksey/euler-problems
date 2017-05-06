@@ -13,3 +13,11 @@ even though it is known that the greatest number that cannot be expressed as the
 less than this limit.
 
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
+
+## Bruteforce
+
+The bruteforce solution first calculates all positive abundant numbers under 28123, the upper limit given in the problem description.  A boolean array of length 28123 is initialized all to true to represent the values that are not the sum of two abundant numbers. A nested loop then iterates each value of the known abundant numbers against itself and switches the boolean value in the non abundant number sum array if the sum of the current two abundant numbers are within the bounds of the array.  Finally, the non abundant sum array is iterated and the index of all true values are summed and the resulting sum is returned.
+
+### Potential Optimizations
+
+Off the top of my head, I see some obvious optimizations to the bruteforce solution.  The first realization is that the nested loop we are calculating each sum twice.  This could reduce the number of calculations from n^2 to (n^2 + n)/2 iterations(add n since we are including numbers that are the sum of the same abundant number).  I am sure that PE will note this, but also we could start the abundant sum loop at 24 since that is the first number that is the sum of two abundant numbers(12 * 2).  Although the first optimization will cut calulation time roughly in half, it is still a topical improvement and would not scale well.
