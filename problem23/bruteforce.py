@@ -29,20 +29,23 @@ def count_non_abundant():
         if sum_divisors(i) > i:
             abundant_numbers.append(i)
 
-    d = {x + y for x in abundant_numbers for y in abundant_numbers}
 
-    #deficient_list = [1] * end
-    #for i in range(len(abundant_numbers)):
-    #    for j in range(len(abundant_numbers)):
-    #        if abundant_numbers[j] + abundant_numbers[i] < end:
-    #            deficient_list[abundant_numbers[j] + abundant_numbers[i]] = 0
+    #d = {x + y for x in abundant_numbers for y in abundant_numbers}
+
+    deficient_list = [1] * end
+    for i in range(len(abundant_numbers)):
+        for j in range(len(abundant_numbers)):
+            if i < j:
+                break
+            if abundant_numbers[j] + abundant_numbers[i] < end:
+                deficient_list[abundant_numbers[j] + abundant_numbers[i]] = 0
 
     non_abundant_sum = 0
     for i in range(1, end):
-        if i not in d:
-            non_abundant_sum += i
-        #if deficient_list[i] == 1:
+        #if i not in d:
         #    non_abundant_sum += i
+        if deficient_list[i] == 1:
+            non_abundant_sum += i
 
     return non_abundant_sum
 
