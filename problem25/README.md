@@ -40,6 +40,12 @@ this method outperformed the string conversion by a factor of ~20 for this probl
 The formula to calculate digits is 
 <p style="text-align: center;">`digits = math.floor(math.log10(n)) + 1`</p>
 
+## Binet's Formula
+
+I found this solution by looking through the forums.
+
+Description of the maths [here](http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html)
+
 ## Lessons
 * In python, `int` is of a limited size and `long` is based on available memory.  Conversion happens when 
 necessary.
