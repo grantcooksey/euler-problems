@@ -19,3 +19,13 @@
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
+.idea/deployment.xml
+#.idea/euler-problems.iml
+.idea/misc.xml
+#.idea/modules.xml
+.idea/preferred-vcs.xml
+.idea/remote-mappings.xml
+.idea/webServers.xml
+
+# Problem specific files
+problem22/names.txt
