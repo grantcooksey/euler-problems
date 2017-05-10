@@ -1,4 +1,4 @@
-# Dev Musing
+# Lessons
 
 This file serves to record some of the dev related things that I have learned while working on this project.
 I would like the project descriptions to focus only on the solution at hand but I ran into issues where
@@ -20,7 +20,7 @@ configuration(Python interpreter) while others do not(source roots).  Github pro
 example but I think that it is high time that I document for myself 
 what the various files in this directory do.
 
-Learn.
+
 
 ## Lessons
 
