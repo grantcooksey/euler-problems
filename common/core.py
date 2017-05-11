@@ -1,18 +1,25 @@
 """Helpers
 
-Collection of common functions that can be reused in later problems.
+This module contains a collection of common functions that can be reused in
+later problems. There is no criteria as to when it is a good idea to transfer
+a function from the problem to the core module other than it might be helpful.
 """
 from math import log10, floor, sqrt
 
 
 def get_num_digits(n):
-    """Number of digits in an int
+    """Number of digits.
 
-    Note:
-        First used in problem 25.
+    A mathematical approach to calculating the number of digits in a number.
+    This method is an alternative to converting the number to a string and
+    calculating the length of the string. This method works well when counting
+    digits for a large number since converting an int to a string is costly.
 
-    :param n: an integer
-    :return: number of digits in given int
+    Args:
+        n (int): Number to get the number of digits from
+
+    Returns:
+        int: Number of digits in n.
     """
     return floor(log10(n)) + 1
 
