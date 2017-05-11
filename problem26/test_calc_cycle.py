@@ -3,9 +3,11 @@ from bruteforce import calc_cycle
 
 
 class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)
-
+    def test_calc_cycle(self):
+        self.assertEqual(calc_cycle(3), 1)
+        self.assertEqual(calc_cycle(6), 1)
+        self.assertEqual(calc_cycle(7), 6)
+        self.assertEqual(calc_cycle(9), 1)
 
 if __name__ == '__main__':
     unittest.main()
