@@ -26,6 +26,12 @@
 .idea/preferred-vcs.xml
 .idea/remote-mappings.xml
 .idea/webServers.xml
+.idea/fileTemplates/code/
+.idea/fileTemplates/includes/
+.idea/fileTemplates/internal/
+.idea/fileTemplates/j2ee/
 
 # Problem specific files
-problem22/names.txt
+problems/problem22/names.txt
+
+
