@@ -8,9 +8,13 @@ I wanted to record information related to my general dev environment.
 This file will serve as that repository.
 My main IDE is PyCharm 2016 but I occasionally use a Jupyter Notebook.
 
-## Unittests
+## Docstrings
 
 Learn.
+
+## Unittests
+
+See [here](http://pythontesting.net/framework/unittest/unittest-introduction/).
 
 ## Code Templates
 
@@ -90,3 +94,11 @@ what the various files in this directory do.
     over `requirements.txt` since
     it explicitly details what version of python the project is using.
 * Share a project interpreter name when sharing `.idea` file.
+
+## TODO
+
+* Learn Docstrings
+* Learn to use Unittests
+* Add prime sieve to core
+* Add tests to core
+* problem 27
