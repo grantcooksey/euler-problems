@@ -2,7 +2,7 @@
 
 Collection of common functions that can be reused in later problems.
 """
-from math import log10, floor
+from math import log10, floor, sqrt
 
 
 def get_num_digits(n):
@@ -18,12 +18,16 @@ def get_num_digits(n):
 
 
 def sum_divisors(n):
-    """Sum of all divisors
+    """Sum of all divisors.
 
-    Calculates the sum of all divisors of a number excluding the number itself.
+    Notes:
+        Does not include the n itself in the sum.
 
-    :param n: int to find the sum
-    :return: int sum
+    Args:
+        n (int): Number to get sum of divisors.
+
+    Returns:
+        int: The sum of all divisors.
     """
     original = n
     s = 1
@@ -43,3 +47,31 @@ def sum_divisors(n):
     if n > 1:
         s *= n + 1
     return s - original
+
+
+def is_prime(n):
+    """Checks if a number is a prime number.
+
+    Args:
+        n (int): Number to check if prime.
+
+    Returns:
+        True is prime, else False.
+    """
+    if n == 1:
+        return False
+    if n < 4:  # 2 and 3
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    if n < 9:  # 5 and 7
+        return True
+
+    r = floor(sqrt(n))
+    f = 5
+    while f <= r:
+        if n % f == 0 or n % (f + 2) == 0:
+            return False
+        f += 6
+
+    return True
