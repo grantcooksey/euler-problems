@@ -1,18 +1,17 @@
 import time
-import common
 from math import floor
 
 
-def calc_cycle(d):
-    n = r = 1
-    rl = list()
-    while r != 0:
-        n *= 10
-        r = n - (d * floor(n / d))
-        if r in rl:
+def calc_cycle(denominator):
+    numerator = 1.
+    remainders = list()
+    while numerator != 0:
+        numerator *= 10
+        numerator -= denominator * floor(numerator / denominator)
+        if numerator in remainders:
             break
-        rl.append(r)
-    return len(rl) - rl.index(r)
+        remainders.append(numerator)
+    return len(remainders) - remainders.index(numerator)
 
 
 def cycles():
