@@ -1,5 +1,5 @@
 import unittest
-from bruteforce import calc_cycle
+from solution import calc_cycle
 
 
 class MyTestCase(unittest.TestCase):
