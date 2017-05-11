@@ -14,7 +14,7 @@ Learn.
 
 ## Unittests
 
-See [here](http://pythontesting.net/framework/unittest/unittest-introduction/).
+See [here](http://pythontesting.net/framework/unittest/unittest-introduction/). 
 
 ## Code Templates
 
@@ -98,7 +98,4 @@ what the various files in this directory do.
 ## TODO
 
 * Learn Docstrings
-* Learn to use Unittests
-* Add prime sieve to core
-* Add tests to core
 * problem 27
