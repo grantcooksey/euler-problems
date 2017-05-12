@@ -9,7 +9,7 @@ the 938th name in the list. So, COLIN would obtain a score of 938 × 53 = 49714.
 
 What is the total of all the name scores in the file?
 
-# Bruteforce Solution
+## Solution
 
 I thought this problem was rather boring and I solved it rather quickly.  I think that the bruteforce solution is the 
 optimal solution for this problem and solved it by reading the file as a csv, sorting the file, and calculating the 

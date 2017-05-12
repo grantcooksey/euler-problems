@@ -7,13 +7,15 @@ For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 a
 
 Evaluate the sum of all the amicable numbers under 10000.
 
-# Bruteforce Racket Solution
+## Solution
+
+### Bruteforce Racket Solution
 
 The bruteforce solution starts by creating a list of the sums of each numbers divisors then checks each number to see if that number has an amicable pair.  If a amicable pair is discovered, the number is left as its own value. Otherwise, if no pair is found, the number is set to zero.  Finally, this list is summed to get the ansIr.
 
 I am not sure what the proper convention should be for amicable pair search.  The index of the current number is passed recursively but this does not feel very lispy(:question:) but I couldn't think of a better. It's basically a map but needs the current number's index.  Potentially this could be done away with by earmarking both numbers in the pair to prevent having to look backward when reaching the second pair.
 
-# Bruteforce Python Solution
+### Bruteforce Python Solution
 
 I wanted to learn a bit more about some python data structures and features that I use less often yet still remain performant.
 The idea is the same as the racket solution where the list of sums of divisors is first generated and the amicable
@@ -38,7 +40,7 @@ membership, insertion, and deletion within the sets and the dictionary.  That be
 deletion are O(1) for [dictionaries and sets](https://wiki.python.org/moin/TimeComplexity), this gives O(n^2)
 complexity for both solutions, ie. a summation of sums.
 
-# Optimization
+### Optimization
 
 I derived the optimized solution with the help of the explanation provided by PE(project euler).  Their solution is 
 interesting because it conserves memory by not utilizing any data structures in the outer loop to find amicable pairs.
@@ -51,11 +53,11 @@ understood that the upper bound of numbers that you need to check was the floor 
 number but I missed the realization that odd number cannot have even divisors.  This improves the solution from O(n^2) 
 to O(sqrt(n)*n).
 
-# Prime Factorization
+### Prime Factorization
 
 [Proof](http://planetmath.org/formulaforsumofdivisors).
 
-# Lessons
+## Lessons
 
 * `Let` is **Awesome**!!!! :heart_eyes: :heart_eyes: Local binding makes debugging much easier and allows me to avoid defining as many top level functions.
 * Be aware that using vectorized code is not always performant.  I need to look into this more to understand what is going on.

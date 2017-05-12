@@ -22,7 +22,9 @@ The 12th term, F12, is the first term to contain three digits.
 
 What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
 
-## Bruteforce
+## Solution
+
+### Bruteforce
 
 This problem was relatively easy to solve using python due to the fact that `int` to `long` conversion happens
 automatically and `long` is only constrained by available memory, allowing me to use very large numbers without 
@@ -40,13 +42,14 @@ this method outperformed the string conversion by a factor of ~20 for this probl
 The formula to calculate digits is 
 <p style="text-align: center;">`digits = math.floor(math.log10(n)) + 1`</p>
 
-## Binet's Formula
+### Binet's Formula
 
 I found this solution by looking through the forums.
 
 Description of the maths [here](http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html)
 
 ## Lessons
+
 * In python, `int` is of a limited size and `long` is based on available memory.  Conversion happens when 
 necessary.
 * Use `digits = math.floor(math.log10(n)) + 1` to calculate number of digits for large numbers.

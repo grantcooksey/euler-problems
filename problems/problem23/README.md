@@ -14,7 +14,9 @@ less than this limit.
 
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
 
-## Bruteforce
+## Solution
+
+### Bruteforce
 
 The bruteforce solution first calculates all positive abundant numbers under 28123, the upper limit given in the 
 problem description.  A boolean array of length 28123 is initialized all to true to represent the values that are 

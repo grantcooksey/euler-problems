@@ -22,5 +22,6 @@ The worst case, building the permutation will take (10 * (10 + 1))/2 = 55 iterat
 of O(n^2) where n is the number of items in our permutation list.
 
 ## Lessons
+
 * Permutations without repetitions in the factorial of the number.  Divide that by (n-r)! for the number of r 
 length permutations.

@@ -94,8 +94,3 @@ what the various files in this directory do.
     over `requirements.txt` since
     it explicitly details what version of python the project is using.
 * Share a project interpreter name when sharing `.idea` file.
-
-## TODO
-
-* Learn Docstrings
-* problem 27

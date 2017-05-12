@@ -28,10 +28,3 @@ starting with n=0.
 
 
 Describe what you did.
-
-
-## Lessons
-
-
-* List any important lessons or tidbits that will be helpful in
-the future in bullet form.
