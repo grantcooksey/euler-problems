@@ -26,5 +26,36 @@ starting with n=0.
 
 ## Solution 
 
+### Bruteforce
 
-Describe what you did.
+My bruteforce solution for this problem is to loop over all possible 
+combinations of a and b for each combination, loop over increasing values of 
+n until a non-prime is found. The product of a and b of the greatest value 
+of n is returned.  Unfortunately, this solution would take a couple of minutes
+to run due to having to check every prime value.
+
+### Optimizations
+
+The first optimization I made was to use a set of precomputed prime values and 
+for each value of n, check for membership in this set to avoid running 
+`is_prime` for every step since running `is_prime` is costly. In all honesty,
+I assumed that the upper bound for the prime set would not be greater 
+than 1000 which turned out to be correct.
+
+### Going Further
+
+After reading through the problem forum I realized I missed a number of key
+realizations.  I implemented these optimizations in `further.py`.
+
+1. b must be prime since for n = 0, n^2 + an + b = b so b must be prime.
+2. b must be odd since for n = 2, n^2 + an + b = 4 + 2a + b so b must be odd.
+3. a must be odd since for n =1, n^2 + an + b = 1 + a + b and b is odd. 
+    b + 1 is even, thus, a must be odd.
+4. The number of primes in a row cannot be greater than b - a since 
+    <p style:"text-align: center;">n^2 + an + b =</p>
+    <p style:"text-align: center;">(b - a)n^2 + a(b - a) + b =</p>
+    <p style:"text-align: center;">b(b - a + 1) which is divisible by b</p>
+    
+## Lessons
+
+* Pay more attention to the maths.
