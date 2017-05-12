@@ -54,8 +54,11 @@ realizations.  I implemented these optimizations in `further.py`.
 4. The number of primes in a row cannot be greater than b - a since 
     <p style:"text-align: center;">n^2 + an + b =</p>
     <p style:"text-align: center;">(b - a)n^2 + a(b - a) + b =</p>
-    <p style:"text-align: center;">b(b - a + 1) which is divisible by b</p>
+    <p style:"text-align: center;">b(b - a + 1) which is divisible by b.</p>
+    Using the bounds |a| < 1000 and |b| ≤ 1000, the maximum number of primes
+    that should be added to the prime set is 999 - -1000 = 1999.
     
+
 ## Lessons
 
 * Pay more attention to the maths.

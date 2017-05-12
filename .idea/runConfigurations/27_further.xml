@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="27-bruteforce" type="PythonConfigurationType" factoryName="Python" folderName="27">
+  <configuration default="false" name="27-further" type="PythonConfigurationType" factoryName="Python" folderName="27">
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
@@ -12,7 +12,7 @@
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <module name="euler-problems" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/problems/problem27/bruteforce.py" />
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/problems/problem27/further.py" />
     <option name="PARAMETERS" value="" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <method />
