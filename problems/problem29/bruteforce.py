@@ -4,7 +4,7 @@ import common
 
 def main():
     start = time.time()
-    ans = 1  #TODO start problem here
+    ans = len(set([a**b for b in xrange(2, 101) for a in xrange(2, 101)]))
     spent = time.time() - start
 
     print('{0} found in {1} seconds'.format(ans, spent))
