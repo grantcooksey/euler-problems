@@ -18,11 +18,10 @@ powers of their digits.
 ## Solution 
 
 
-Describe what you did.
-
-
-## Lessons
-
-
-* List any important lessons or tidbits that will be helpful in
-the future in bullet form.
+The solution first finds the upper bound of possible numbers. Since the sum of 
+powers grows at a constant rate for each additional digits contrasted with 
+adding a digits, which grows exponentially at a factor of 10, there is an 
+upper bound for the power sum. The bruteforce solution iterates through the 
+numbers 2 to the upper bound and check if the sum of powers for each number
+is equal to the number.  Avoiding string conversion significantly speeds up
+the computation.
