@@ -1,14 +1,14 @@
 import time
 import common
-from itertools import product
 
 
-def get_digit_power_sum(t, power):
-    return reduce(lambda rst, d: rst + d**power, t, 0)
-
-
-def get_digit_value(t):
-    return reduce(lambda rst, d: rst * 10 + d, t)
+def digit_power_sum(n, power):
+    power_sum = 0
+    while n >= 10:
+        power_sum += (n % 10)**power
+        n /= 10
+    power_sum += n**power
+    return power_sum
 
 
 def digit_fifth_powers():
@@ -18,13 +18,12 @@ def digit_fifth_powers():
     while i * 9**5 > 10**i:  # find the upper bound
         i += 1
 
-    for p in product(range(10), repeat=i):
-        power_sum = get_digit_power_sum(p, 5)
-        digit_value = get_digit_value(p)
-        if power_sum == digit_value:
+    for n in xrange(2, (i * 9**5) + 1):
+        power_sum = digit_power_sum(n, 5)
+        if power_sum == n:
             fifth_power_sum += power_sum
 
-    return fifth_power_sum - 1  # Ignore 1 = 1^5
+    return fifth_power_sum
 
 
 def main():

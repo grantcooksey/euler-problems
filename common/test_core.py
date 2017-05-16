@@ -1,5 +1,6 @@
 from unittest import TestCase
-from core import is_prime
+from core import is_prime, get_digit_power_sum, get_digit_value, \
+    split_into_digits
 
 
 class TestIsPrime(TestCase):
@@ -29,3 +30,34 @@ class TestIsPrime(TestCase):
 
     def test_is_prime_1219(self):
         self.assertEquals(is_prime(1219), False)
+
+
+class TestTupleConversion(TestCase):
+    def test_get_digit_power_sum_1634(self):
+        self.assertEqual(get_digit_power_sum((1, 6, 3, 4), 4), 1634)
+
+    def test_get_digit_power_sum_20(self):
+        self.assertEqual(get_digit_power_sum((2, 0), 5), 32)
+
+    def test_get_digit_power_sum_9474(self):
+        self.assertEqual(get_digit_power_sum((9, 4, 7, 4), 4), 9474)
+
+    def test_get_digit_value_1637(self):
+        self.assertEqual(get_digit_value((1, 6, 3, 7)), 1637)
+
+    def test_get_digit_value_20(self):
+        self.assertEqual(get_digit_value((2, 0)), 20)
+
+    def test_get_digit_value_9474(self):
+        self.assertEqual(get_digit_value((9, 4, 7, 4)), 9474)
+
+
+class TestSplitNumber(TestCase):
+    def test_split_digits_1637(self):
+        self.assertEqual(split_into_digits(1637), [1, 6, 3, 7])
+
+    def test_split_digits_1(self):
+        self.assertEqual(split_into_digits(1), [1])
+
+    def test_split_digits_20(self):
+        self.assertEqual(split_into_digits(20), [2, 0])

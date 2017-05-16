@@ -82,3 +82,49 @@ def is_prime(n):
         f += 6
 
     return True
+
+
+def get_digit_power_sum(t, power):
+    """Sum of power of each digit.
+
+    Sums each digit raised by the power.
+
+    Args:
+        t (tuple): tuple of single digit positive ints.
+        power (int): power to raise each digit.
+
+    Returns:
+        int: Sum of digits raised by the power.
+    """
+    return reduce(lambda rst, d: rst + d**power, t, 0)
+
+
+def get_digit_value(t):
+    """Converts a tuple into number.
+
+    Args:
+        t (tuple): tuple of single digit positive ints.
+
+    Returns:
+        int: Number the tuple represents.
+
+    """
+    return reduce(lambda rst, d: rst * 10 + d, t)
+
+
+def split_into_digits(n):
+    """Splits an int into a list of ints.
+
+    Args:
+        n (int): Number to split.
+
+    Returns:
+        list: List of ints.
+
+    """
+    digits = list()
+    while n >= 10:
+        digits = [n % 10] + digits
+        n /= 10
+    digits = [n] + digits
+    return digits

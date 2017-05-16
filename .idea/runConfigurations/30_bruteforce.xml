@@ -12,7 +12,7 @@
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <module name="euler-problems" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-    <option name="SCRIPT_NAME" value="C:\Users\gcooksey\Work\Play\euler\euler-problems\problems\problem30\bruteforce_30.py" />
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/problems/problem30/bruteforce_30.py" />
     <option name="PARAMETERS" value="" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <method />
