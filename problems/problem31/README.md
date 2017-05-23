@@ -36,10 +36,3 @@ index of 2, since 5 < 6, we will add
 to the stack. When each of these value are popped off, only the last item
 will not be discarded. The number of items that were not discarded is 
 returned.
-
-
-## Lessons
-
-
-* List any important lessons or tidbits that will be helpful in
-the future in bullet form.
