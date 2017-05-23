@@ -16,7 +16,9 @@ find the value of the denominator.
 ## Solution 
 
 
-Describe what you did.
+The solution was to loop over all the possible values and manually check
+each for matching digits and equality when divided against the original 
+fraction.  Not going to improve further since it already runs very quickly.
 
 
 ## Lessons
