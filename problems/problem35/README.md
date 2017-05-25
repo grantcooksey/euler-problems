@@ -12,10 +12,15 @@ How many circular primes are there below one million?
 ## Solution 
 
 
-Describe what you did.
+The solution first generates a list of all primes under 1000000 and places
+them in a set since we are only looping through the numbers and testing for 
+membership. For each number under 1000000, we test if it is circular by 
+dividing by 10^(number of digits - 1) to get the first digits and then 
+testing if the remainder * 10 + first digit is prime. This is repeated until 
+all digits have cycled through.
 
 
 ## Lessons
 
 
-* Seive of Eratosthenes - see problem 10
+* Sieve of Eratosthenes - see problem 10
