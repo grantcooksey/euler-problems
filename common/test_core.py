@@ -1,6 +1,17 @@
 from unittest import TestCase
 from core import is_prime, get_digit_power_sum, get_digit_value, \
-    split_into_digits
+    split_into_digits, prime_sieve
+
+
+class TestPrimeSieve(TestCase):
+    def test_sieve_10(self):
+        self.assertEquals(prime_sieve(10), [2, 3, 5, 7])
+
+    def test_sieve_0(self):
+        self.assertEquals(prime_sieve(0), list())
+
+    def test_sieve_25(self):
+        self.assertEquals(prime_sieve(25), [2, 3, 5, 7, 11, 13, 17, 19, 23])
 
 
 class TestIsPrime(TestCase):

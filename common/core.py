@@ -7,6 +7,41 @@ a function from the problem to the core module other than it might be helpful.
 from math import log10, floor, sqrt
 
 
+def prime_sieve(n):
+    """Prime Sieve
+
+    Generates a list of primes under an upper bound.
+    This sieve is based on an optimised sieve of Eratosthenes. It is optimized
+    to skip even numbers to save computational time and memory.
+
+    Args:
+        n (int): Upper bound.
+
+    Returns:
+        list: All prime numbers under n.
+    """
+    bound = (n - 1) / 2
+    sieve = [True] * bound
+    limit = int((floor(sqrt(n)) - 1) / 2)
+    for i in xrange(limit):
+        if sieve[i]:
+            # Find all odd multiples
+            for j in xrange(2 * (i + 1) * (i + 2), bound + 1, 2 * (i + 1) + 1):
+                sieve[j - 1] = False
+
+    # Convert to primes using index
+    primes = list()
+    for i in xrange(len(sieve)):
+        if sieve[i]:
+            primes.append(2 * (i + 1) + 1)
+
+    # 2 is not included
+    if n >= 2:
+        primes = [2] + primes
+
+    return primes
+
+
 def get_num_digits(n):
     """Number of digits.
 
@@ -21,7 +56,7 @@ def get_num_digits(n):
     Returns:
         int: Number of digits in n.
     """
-    return floor(log10(n)) + 1
+    return int(floor(log10(n)) + 1)
 
 
 def sum_divisors(n):
