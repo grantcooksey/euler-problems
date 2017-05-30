@@ -12,17 +12,17 @@ def palindrome(s):
 
 def double_base():
     db_sum = 0
-    for i in range(1, 4):
-        for p_tuple in product(range(10), i):  # TODO get correct syntax for permutation with repetition
-            p_num = common.get_digit_value(p_tuple)
-            p_full = (p_num * 10**i) + p_num
-            if palindrome(bin(p_full)):
-                db_sum += p_full
-            if i < 3:
-                for middle in range(10):
-                    p_full = (p_num * 10**(i + 1)) + (middle * 10**i) + p_num
-                    if palindrome(bin(p_num)):
-                        db_sum += p_full
+    for p_tuple in product(range(10), 3):  # TODO get correct syntax for permutation with repetition
+        p_num = common.get_digit_value(p_tuple)
+        i = common.get_num_digits(p_num)
+        p_full = (p_num * 10**i) + p_num  # Create the palindrome
+        if palindrome(bin(p_full)):
+            db_sum += p_full
+        if i < 3:  # Odd number digits palindromes
+            for middle in range(10):
+                p_full = (p_num * 10**(i + 1)) + (middle * 10**i) + p_num
+                if palindrome(bin(p_num)):
+                    db_sum += p_full
     return db_sum
 
 
