@@ -8,10 +8,6 @@ I wanted to record information related to my general dev environment.
 This file will serve as that repository.
 My main IDE is PyCharm 2016 but I occasionally use a Jupyter Notebook.
 
-## Docstrings
-
-TODO: Learn docstrings.
-
 ## Unittests
 
 See [here](http://pythontesting.net/framework/unittest/unittest-introduction/). 
@@ -101,3 +97,4 @@ what the various files in this directory do.
 README and bruteforce solution. The script should take the problem number
 and creates the README using the problem description with the lines < 80
 characters long.
+* Check out docstrings.
