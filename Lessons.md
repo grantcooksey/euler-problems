@@ -10,7 +10,7 @@ My main IDE is PyCharm 2016 but I occasionally use a Jupyter Notebook.
 
 ## Docstrings
 
-Learn.
+TODO: Learn docstrings.
 
 ## Unittests
 
@@ -18,8 +18,8 @@ See [here](http://pythontesting.net/framework/unittest/unittest-introduction/).
 
 ## Code Templates
 
-Code templates are a useful feature for quickly creating a code skeleton for 
-a new project.  I created a `skeleton`
+Code templates are a useful feature for quickly creating a code template for
+a new project.  I created a `template`
 folder to ease this process for when I work in a bash shell but I was curious 
 to see if I could add the 
 [code templates](https://www.jetbrains.com/help/pycharm/2017.1/file-and-code-templates.html) 
@@ -94,3 +94,10 @@ what the various files in this directory do.
     over `requirements.txt` since
     it explicitly details what version of python the project is using.
 * Share a project interpreter name when sharing `.idea` file.
+
+## Enhancements
+
+* Add a script that pulls problem off of euler website and generates the
+README and bruteforce solution. The script should take the problem number
+and creates the README using the problem description with the lines < 80
+characters long.

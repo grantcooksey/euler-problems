@@ -26,5 +26,5 @@ Code templates and run configurations provided.
 
 ### Linux
 
-If working in a Linux environment, the `skeleton` code template has been provided
+If working in a Linux environment, the `template` code skeleton has been provided
 and can be copied and renamed whenever tackling a new problem.
