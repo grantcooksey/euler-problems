@@ -4,6 +4,7 @@ from itertools import product
 
 
 def palindrome(s):
+    s = s[2:]  # Remove 'b0'
     s_reversed = str()
     for c in reversed(s):
         s_reversed += c
@@ -12,17 +13,28 @@ def palindrome(s):
 
 def double_base():
     db_sum = 0
-    for p_tuple in product(range(10), 3):  # TODO get correct syntax for permutation with repetition
+    for p_tuple in product(range(10), repeat=3):
         p_num = common.get_digit_value(p_tuple)
+        p_reversed = int(str(p_num)[::-1])
+
+        if p_num == 0:
+            continue
+
         i = common.get_num_digits(p_num)
-        p_full = (p_num * 10**i) + p_num  # Create the palindrome
+        p_full = (p_num * 10**i) + p_reversed  # Create the palindrome
         if palindrome(bin(p_full)):
             db_sum += p_full
         if i < 3:  # Odd number digits palindromes
             for middle in range(10):
-                p_full = (p_num * 10**(i + 1)) + (middle * 10**i) + p_num
-                if palindrome(bin(p_num)):
+                p_full = (p_num * 10**(i + 1)) + (middle * 10**i) + p_reversed
+                if palindrome(bin(p_full)):
                     db_sum += p_full
+
+    # Check for single digit palindromes
+    for n in xrange(1, 10):
+        if palindrome(bin(n)):
+            db_sum += n
+
     return db_sum
 
 
