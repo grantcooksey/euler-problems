@@ -12,7 +12,7 @@
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <module name="euler-problems" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/problem.py" />
+    <option name="SCRIPT_NAME" value="C:\Users\gcooksey\Work\Play\euler\euler-problems\scripts\problem_scraper.py" />
     <option name="PARAMETERS" value="37" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <method />
