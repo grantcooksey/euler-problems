@@ -2,6 +2,9 @@ import sys
 from urllib2 import urlopen, URLError
 from lxml import html
 
+LINE_LENGTH = 80  # Max number of chars on a line
+LONG_WORD = 30  # Length of word to consider splitting in two between lines
+
 
 def split_into_lines(s):
     text = str()
@@ -10,11 +13,13 @@ def split_into_lines(s):
         words = line.split(' ')
         new_line = str()
         for i in range(len(words)):
-            if len(words[i]) > 80:  # Long word on its own line
-                text += new_line + '\n' + words[i] + '\n'
-                new_line = str()
-            if len(new_line + words[i] + ' ') > 80:
-                text += new_line + '\n'
+            if len(new_line + words[i] + ' ') > LINE_LENGTH:
+                if len(words[i]) > LONG_WORD:  # Long words are split
+                    split_index = LINE_LENGTH - len(new_line)
+                    text += new_line + words[i][:split_index] + '\n'
+                    words[i] = words[i][split_index:]
+                else:
+                    text += new_line + '\n'
                 new_line = str()
             new_line += words[i] + ' '
         text += new_line + '\n\n'
