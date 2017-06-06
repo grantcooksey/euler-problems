@@ -11,7 +11,7 @@ class TestSplitIntoLines(TestCase):
             '3797, \n379, 37, and 3. \n\nFind the sum of the only eleven ' + \
             'primes that are both truncatable from left to \nright and ' + \
             'right to left. \n\nNOTE: 2, 3, 5, and 7 are not considered ' + \
-            'to be truncatable primes. \n\n'
+            'to be truncatable primes. '
         x, description = parse_problem(make_request(37))
         parsed_test = split_into_lines(description)
         self.assertEqual(parsed_test, text)
@@ -26,7 +26,7 @@ class TestSplitIntoLines(TestCase):
                'and 3. \n\nFind the sum of the only eleven primes that are ' \
                'both truncatable from left to \nright and right to left. \n' \
                '\nNOTE: 2, 3, 5, and 7 are not considered to be truncatable' \
-               ' primes. \n\n'
+               ' primes. '
         x, description = parse_problem(make_request(37))
         long_word = ' ' + ''.join('a' for a in range(100))
         description = description[:10] + long_word + description[10:]

@@ -38,6 +38,7 @@ Todo:
 """
 import sys
 import os
+import re
 import shutil
 from urllib2 import urlopen, URLError
 from lxml import html
@@ -78,7 +79,7 @@ def split_into_lines(s):
             new_line += words[i] + ' '
         text += new_line + '\n\n'
 
-    return text
+    return text[:-2]  # Ignore extra whitespace at the end
 
 
 def make_request(problem_number):
@@ -145,10 +146,38 @@ def new_problem(problem_number):
 
 
 def fill_readme(description, title):
-    pass
+    """
+
+    Args:
+        description:
+        title:
+
+    Returns:
+
+    """
+    # Open file and get contents
+    with open('README.md') as readme_file:
+        contents = readme_file.read()
+
+    new_readme = re.sub(r'Problem Name', title, contents)
+    new_readme = re.sub(r'Problem description.*', description, new_readme)
+
+    # Overwrite file
+    with open('README.md', 'w') as readme_file:
+        readme_file.write(new_readme)
 
 
 def create_template(problem_number, description, title):
+    """
+
+    Args:
+        problem_number:
+        description:
+        title:
+
+    Returns:
+
+    """
     path = '../problems'
     new_dir = 'problem{0}'.format(problem_number)
 
@@ -199,6 +228,8 @@ def main(argv):
         else:
             print('Error: Failed to generate problem {0}. Directory or file '
                   'may already exist.'.format(problem_number))
+
+    print('Files have finished generating.')
 
 
 if __name__ == '__main__':
