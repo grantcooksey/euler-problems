@@ -38,6 +38,7 @@ Todo:
 """
 import sys
 import os
+import shutil
 from urllib2 import urlopen, URLError
 from lxml import html
 
@@ -143,6 +144,35 @@ def new_problem(problem_number):
     return not os.path.exists(path)
 
 
+def fill_readme(description, title):
+    pass
+
+
+def create_template(problem_number, description, title):
+    path = '../problems'
+    new_dir = 'problem{0}'.format(problem_number)
+
+    # Create problem directory
+    os.chdir(path)
+    try:
+        os.mkdir(new_dir)
+    except OSError:
+        print("Directory {0} already exists. Something went wrong... "
+              "check new_problem()")
+
+    # Copy README and code skeleton over
+    try:
+        shutil.copy('../template/README.md', new_dir)
+        shutil.copy('../template/solution_number.py', new_dir)
+        os.chdir(new_dir)
+        shutil.move('solution_number.py',
+                    'bruteforce_{0}.py'.format(problem_number))
+    except OSError:
+        print('Error: Failed to copy and rename files.')
+
+    fill_readme(description, title)
+
+
 def main(argv):
     # Change module's working directory to the module's own directory
     os.chdir(sys.path[0])
@@ -164,10 +194,12 @@ def main(argv):
             # Split string into lines less than 80 char long
             description = split_into_lines(description_long)
 
-            # TODO: Create problem directory
-            # TODO: Copy README and code skeleton over
-            # TODO: Replace README title with problem title
-            # TODO: Replace README description with problem description
+            # Create template
+            create_template(problem_number, description, title)
+        else:
+            print('Error: Failed to generate problem {0}. Directory or file '
+                  'may already exist.'.format(problem_number))
+
 
 if __name__ == '__main__':
     main(sys.argv[1:])
