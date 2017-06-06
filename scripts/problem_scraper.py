@@ -146,13 +146,11 @@ def new_problem(problem_number):
 
 
 def fill_readme(description, title):
-    """
+    """Adds problem description and title to README.
 
     Args:
-        description:
-        title:
-
-    Returns:
+        description (str): Problem description.
+        title (str): Problem title.
 
     """
     # Open file and get contents
@@ -168,14 +166,12 @@ def fill_readme(description, title):
 
 
 def create_template(problem_number, description, title):
-    """
+    """Creates code template and README for problem.
 
     Args:
-        problem_number:
-        description:
-        title:
-
-    Returns:
+        problem_number (int): Number of Project Euler problem.
+        description (str): Problem description.
+        title (str): Problem title.
 
     """
     path = '../problems'
