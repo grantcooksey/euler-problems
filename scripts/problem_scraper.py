@@ -33,9 +33,11 @@ Attributes:
 Todo:
     * Don't split urls
     * Format math equations
+    * Generate method in code template
 
 """
 import sys
+import os
 from urllib2 import urlopen, URLError
 from lxml import html
 
@@ -123,10 +125,28 @@ def parse_problem(content):
 
 
 def new_problem(problem_number):
-    pass
+    """Checks is problem does not exist in collection of problems.
+
+    The purpose of this function is avoid overwriting problems.
+    If a directory or file named `problem<problem_number>`
+    exists in `problems`, a problem template should not be generated.
+
+    Args:
+        problem_number (int): Problem to check.
+
+    Returns:
+        bool: True if problem has not been attempted or previously created,
+            else False.
+
+    """
+    path = '../problems/problem{0}'.format(problem_number)
+    return not os.path.exists(path)
 
 
 def main(argv):
+    # Change module's working directory to the module's own directory
+    os.chdir(sys.path[0])
+
     # Check that all arguments are integers
     try:
         problems = [int(item) for item in argv]
@@ -148,8 +168,6 @@ def main(argv):
             # TODO: Copy README and code skeleton over
             # TODO: Replace README title with problem title
             # TODO: Replace README description with problem description
-            # TODO: Enhancement. Generate method in code template
-
 
 if __name__ == '__main__':
     main(sys.argv[1:])
