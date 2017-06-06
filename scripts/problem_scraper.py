@@ -1,12 +1,63 @@
+"""Web Scraper to pull new down problem from Project Euler.
+
+This module is to assist in generating the problems rather than copying
+and pasting from Project Euler's website and provide some standardization
+between problems. The problem description is
+scraped from the problem page and is formatted and placed into a template
+README. The problem description is split into lines less than LINE_LENGTH
+and attempts to not split words in half unless dealing with long words.
+See `Note`. A new directory for the problem is placed in `problems` and the
+README and a bruteforce code template are placed in the directory. The
+naming convention for the directory is `problem<problem_number>`. If the
+directory already exists, the problem is skipped.
+
+Note:
+    When formatting the README, words longer than 30 characters are split
+    between two lines. If the long word runs over the second line after
+    the first split, it is not split again.
+
+Example:
+    To pull down problem 37 and generate the README and template::
+
+        $ python problem_scraper.py 37
+
+    For multiple problems::
+
+        $ python problem_scraper.py 37 48 52
+
+Attributes:
+    LINE_LENGTH (int): Maximum length of character per line. See ``Note``for
+        when dealing with long words.
+    LONG_WORD (int): Length of word to consider splitting in two between lines.
+
+Todo:
+    * Don't split urls
+    * Format math equations
+
+"""
 import sys
 from urllib2 import urlopen, URLError
 from lxml import html
 
-LINE_LENGTH = 80  # Max number of chars on a line
-LONG_WORD = 30  # Length of word to consider splitting in two between lines
+LINE_LENGTH = 80
+LONG_WORD = 30
 
 
 def split_into_lines(s):
+    """Splits lines into >= LINE_LENGTH characters long lines
+
+    Note:
+        Words longer than 30 characters are split between two lines. If the
+        long word runs over the second line after the first split, it is not
+        split again.
+
+    Args:
+        s (str): Text to split.
+
+    Returns:
+        str: Text split by appropriate newline chars.
+
+    """
     text = str()
 
     for line in s.split('\n'):
@@ -28,6 +79,15 @@ def split_into_lines(s):
 
 
 def make_request(problem_number):
+    """Pulls content from the Project Euler website.
+
+    Args:
+        problem_number (int): Problem number to pull down.
+
+    Returns:
+        HTML element.
+
+    """
     url = 'https://projecteuler.net/problem=' + str(problem_number)
 
     # Make request to euler
@@ -42,6 +102,16 @@ def make_request(problem_number):
 
 
 def parse_problem(content):
+    """Parses the title and problem description.
+
+    Args:
+        content: HTML element from a Project Euler problem description.
+
+    Returns:
+        str: Title of problem.
+        str: Problem description.
+
+    """
     # Parse title and capitalize first letters
     title = content.xpath('//h2/text()')[0].title()
 
@@ -50,6 +120,10 @@ def parse_problem(content):
     description_long = '\n'.join(x.text for x in el)
 
     return title, description_long
+
+
+def new_problem(problem_number):
+    pass
 
 
 def main(argv):
@@ -61,19 +135,20 @@ def main(argv):
         sys.exit(1)
 
     for problem_number in problems:
-        content = make_request(problem_number)
+        if new_problem(problem_number):
+            content = make_request(problem_number)
 
-        # Parse out question description and title
-        title, description_long = parse_problem(content)
+            # Parse out question description and title
+            title, description_long = parse_problem(content)
 
-        # Split string into lines less than 80 char long
-        description = split_into_lines(description_long)
+            # Split string into lines less than 80 char long
+            description = split_into_lines(description_long)
 
-        # TODO: Create problem directory
-        # TODO: Copy README and code skeleton over
-        # TODO: Replace README title with problem title
-        # TODO: Replace README description with problem description
-        # TODO: Enhancement. Generate method in code template
+            # TODO: Create problem directory
+            # TODO: Copy README and code skeleton over
+            # TODO: Replace README title with problem title
+            # TODO: Replace README description with problem description
+            # TODO: Enhancement. Generate method in code template
 
 
 if __name__ == '__main__':
