@@ -1,16 +1,16 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="26-brute-test" type="tests" factoryName="Unittests" folderName="26-test">
+  <configuration default="false" name="37-bruteforce-test" type="tests" factoryName="Unittests" folderName="37">
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs />
-    <option name="SDK_HOME" value="" />
-    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/problems/problem26" />
-    <option name="IS_MODULE_SDK" value="true" />
+    <option name="SDK_HOME" value="ssh://grant@10.70.200.22:22/home/grant/Euler/euler-env/bin/python" />
+    <option name="WORKING_DIRECTORY" value="" />
+    <option name="IS_MODULE_SDK" value="false" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <module name="euler-problems" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/problems/problem26/test_calc_cycle.py" />
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/problems/problem37/test_truncate.py" />
     <option name="CLASS_NAME" value="" />
     <option name="METHOD_NAME" value="" />
     <option name="FOLDER_NAME" value="" />
