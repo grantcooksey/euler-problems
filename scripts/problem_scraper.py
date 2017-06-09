@@ -29,10 +29,11 @@ Attributes:
     LINE_LENGTH (int): Maximum length of character per line. See ``Note``for
         when dealing with long words.
     LONG_WORD (int): Length of word to consider splitting in two between lines.
+    PATH (str): Path to the problem directory.
 
 Todo:
     * Don't split urls
-    * Format math equations
+    * Handle unicode
     * Generate method in code template
 
 """
@@ -45,6 +46,7 @@ from lxml import html
 
 LINE_LENGTH = 80
 LONG_WORD = 30
+PATH = '../problems'
 
 
 def split_into_lines(s):
@@ -141,7 +143,7 @@ def new_problem(problem_number):
             else False.
 
     """
-    path = '../problems/problem{0}'.format(problem_number)
+    path = PATH + '/problem{0}'.format(problem_number)
     return not os.path.exists(path)
 
 
@@ -174,11 +176,10 @@ def create_template(problem_number, description, title):
         title (str): Problem title.
 
     """
-    path = '../problems'
     new_dir = 'problem{0}'.format(problem_number)
 
     # Create problem directory
-    os.chdir(path)
+    os.chdir(PATH)
     try:
         os.mkdir(new_dir)
     except OSError:
@@ -198,6 +199,10 @@ def create_template(problem_number, description, title):
     fill_readme(description, title)
 
 
+def delete_dir(problem_number):
+    raise NotImplementedError('Directory roll back has not been implemented yet.')
+
+
 def main(argv):
     # Change module's working directory to the module's own directory
     os.chdir(sys.path[0])
@@ -211,16 +216,21 @@ def main(argv):
 
     for problem_number in problems:
         if new_problem(problem_number):
-            content = make_request(problem_number)
+            try:
+                content = make_request(problem_number)
 
-            # Parse out question description and title
-            title, description_long = parse_problem(content)
+                # Parse out question description and title
+                title, description_long = parse_problem(content)
 
-            # Split string into lines less than 80 char long
-            description = split_into_lines(description_long)
+                # Split string into lines less than 80 char long
+                description = split_into_lines(description_long)
 
-            # Create template
-            create_template(problem_number, description, title)
+                # Create template
+                create_template(problem_number, description, title)
+            except Exception, e:
+                print('Error: ' + str(e))
+                print('Error: Problem {0}- rolling back.')
+                delete_dir(problem_number)
         else:
             print('Error: Failed to generate problem {0}. Directory or file '
                   'may already exist.'.format(problem_number))
