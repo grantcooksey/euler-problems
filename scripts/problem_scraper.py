@@ -37,7 +37,6 @@ Attributes:
 
 Todo:
     * Don't split urls
-    * Handle unicode
     * Generate method in code template
 
 """
@@ -127,7 +126,11 @@ def parse_problem(content):
 
     # Parse out question info
     el = content.xpath('//div[@class="problem_content"]/child::*')
-    description_long = '\n'.join(x.text for x in el)
+    lines = list()
+    for element in el:
+        lines.append(''.join(x for x in element.xpath('.//text()')))
+
+    description_long = '\n'.join(x for x in lines)
 
     return title, description_long
 
@@ -155,6 +158,7 @@ def fill_readme(file_path, description, title):
     """Adds problem description and title to README.
 
     Args:
+        file_path (str): Path to current problem directory.
         description (str): Problem description.
         title (str): Problem title.
 
@@ -168,7 +172,7 @@ def fill_readme(file_path, description, title):
 
     # Overwrite file
     with open(file_path + '/README.md', 'w') as readme_file:
-        readme_file.write(new_readme)
+        readme_file.write(new_readme.encode('utf-8'))
 
 
 def create_template(problem_number, description, title):
@@ -248,7 +252,7 @@ def main(argv):
             print('Error: Failed to generate problem {0}. Directory or file '
                   'may already exist.'.format(problem_number))
 
-    print('{0} problem templates have been generated.'.format(count))
+    print('Number of templates generates : {0}.'.format(count))
 
 
 if __name__ == '__main__':
