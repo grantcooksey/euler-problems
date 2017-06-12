@@ -29,7 +29,11 @@ Attributes:
     LINE_LENGTH (int): Maximum length of character per line. See ``Note``for
         when dealing with long words.
     LONG_WORD (int): Length of word to consider splitting in two between lines.
-    PATH (str): Path to the problem directory.
+    PROBLEM_PATH (str): Path to the problem directory.
+    PROBLEM_FILE_NAME (str): Name of problem skeleton.
+    TEMPLATE_README (str): Path to README template.
+    TEMPLATE_PROBLEM (str): Path to problem skeleton.
+    NEW_PROBLEM_FILE (str): Name of new problem script.
 
 Todo:
     * Don't split urls
@@ -46,7 +50,11 @@ from lxml import html
 
 LINE_LENGTH = 80
 LONG_WORD = 30
-PATH = '../problems'
+PROBLEM_PATH = '../problems/'
+PROBLEM_FILE_NAME = 'solution_number.py'
+TEMPLATE_README = '../template/README.md'
+TEMPLATE_PROBLEM = '../template/' + PROBLEM_FILE_NAME
+NEW_PROBLEM_FILE = 'bruteforce'
 
 
 def split_into_lines(s):
@@ -97,12 +105,8 @@ def make_request(problem_number):
     url = 'https://projecteuler.net/problem=' + str(problem_number)
 
     # Make request to euler
-    try:
-        page = urlopen(url, timeout=5)
-        content = html.fromstring(page.read())
-    except URLError:
-        print('Error: The request to {0} did not complete.'.format(url))
-        sys.exit(1)
+    page = urlopen(url, timeout=5)
+    content = html.fromstring(page.read())
 
     return content
 
@@ -143,11 +147,11 @@ def new_problem(problem_number):
             else False.
 
     """
-    path = PATH + '/problem{0}'.format(problem_number)
+    path = PROBLEM_PATH + 'problem{0}'.format(problem_number)
     return not os.path.exists(path)
 
 
-def fill_readme(description, title):
+def fill_readme(file_path, description, title):
     """Adds problem description and title to README.
 
     Args:
@@ -156,14 +160,14 @@ def fill_readme(description, title):
 
     """
     # Open file and get contents
-    with open('README.md') as readme_file:
+    with open(file_path + '/README.md') as readme_file:
         contents = readme_file.read()
 
     new_readme = re.sub(r'Problem Name', title, contents)
     new_readme = re.sub(r'Problem description.*', description, new_readme)
 
     # Overwrite file
-    with open('README.md', 'w') as readme_file:
+    with open(file_path + '/README.md', 'w') as readme_file:
         readme_file.write(new_readme)
 
 
@@ -179,31 +183,36 @@ def create_template(problem_number, description, title):
     new_dir = 'problem{0}'.format(problem_number)
 
     # Create problem directory
-    os.chdir(PATH)
     try:
-        os.mkdir(new_dir)
+        os.mkdir(PROBLEM_PATH + new_dir)
     except OSError:
         print("Directory {0} already exists. Something went wrong... "
               "check new_problem()")
 
     # Copy README and code skeleton over
     try:
-        shutil.copy('../template/README.md', new_dir)
-        shutil.copy('../template/solution_number.py', new_dir)
-        os.chdir(new_dir)
-        shutil.move('solution_number.py',
-                    'bruteforce_{0}.py'.format(problem_number))
+        shutil.copy(TEMPLATE_README, PROBLEM_PATH + new_dir)
+        shutil.copy(TEMPLATE_PROBLEM, PROBLEM_PATH + new_dir)
+        shutil.move(PROBLEM_PATH + new_dir + '/' + PROBLEM_FILE_NAME,
+                    PROBLEM_PATH + new_dir +
+                    '/' + NEW_PROBLEM_FILE + '_{0}.py'.format(problem_number))
     except OSError:
         print('Error: Failed to copy and rename files.')
 
-    fill_readme(description, title)
+    fill_readme(PROBLEM_PATH + new_dir, description, title)
 
 
 def delete_dir(problem_number):
-    raise NotImplementedError('Directory roll back has not been implemented yet.')
+    try:
+        shutil.rmtree(PROBLEM_PATH + 'problem' + str(problem_number))
+    except OSError:
+        print('Cannot delete directory for problem {0}. Check that it exists '
+              'and that the path is correct.')
 
 
 def main(argv):
+    count = 0
+
     # Change module's working directory to the module's own directory
     os.chdir(sys.path[0])
 
@@ -227,15 +236,19 @@ def main(argv):
 
                 # Create template
                 create_template(problem_number, description, title)
+
+                count += 1
+            except URLError:
+                print('Error: The request to {0} did not complete.'.format(problem_number))
             except Exception, e:
                 print('Error: ' + str(e))
-                print('Error: Problem {0}- rolling back.')
+                print('Rolling back problem {0}.'.format(problem_number))
                 delete_dir(problem_number)
         else:
             print('Error: Failed to generate problem {0}. Directory or file '
                   'may already exist.'.format(problem_number))
 
-    print('Files have finished generating.')
+    print('{0} problem templates have been generated.'.format(count))
 
 
 if __name__ == '__main__':
