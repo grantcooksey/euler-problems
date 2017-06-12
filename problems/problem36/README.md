@@ -35,10 +35,3 @@ In the case of palindromes with an odd number of digits, each permutation
 will be created into a group of palindromes with the middle numbers from 1
 to 9. These will then be checked to see if their binary equivalents' are
 palindromes.
-
-
-## Lessons
-
-
-* List any important lessons or tidbits that will be helpful in
-the future in bullet form.

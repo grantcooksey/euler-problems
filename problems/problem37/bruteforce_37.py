@@ -34,7 +34,7 @@ def truncatable_primes():
     primes = common.prime_sieve(1000000)
     prime_set = set(primes)
 
-    under_10 = primes[:4]
+    # under_10 = set(primes[:4])
     primes = primes[4:]  # Ignore single digits primes
 
     # Filter primes where first and last digit are not prime
