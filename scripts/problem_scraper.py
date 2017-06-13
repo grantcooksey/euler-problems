@@ -38,6 +38,7 @@ Attributes:
 Todo:
     * Don't split urls
     * Generate method in code template
+    * Default to the next problem
 
 """
 import sys
@@ -252,7 +253,7 @@ def main(argv):
             print('Error: Failed to generate problem {0}. Directory or file '
                   'may already exist.'.format(problem_number))
 
-    print('Number of templates generates : {0}.'.format(count))
+    print('Number of templates generated: {0}.'.format(count))
 
 
 if __name__ == '__main__':
